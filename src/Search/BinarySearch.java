@@ -7,26 +7,45 @@ public class BinarySearch {
 
         Integer val = binarySearch(arr, 7);
         System.out.println(val);
+
+        Integer[] arr1 = null;
+
+        System.out.println(arr1);
+
+        arr1 = new Integer[0];
+
+        System.out.println(arr1);
+        System.out.println(arr1.length);
     }
 
-    public static Integer binarySearch(Integer[] arr, Integer value){
+    public static Integer binarySearch(Integer[] arr, Integer value) {
 
-        int left = 0;
-        int right = arr.length;
+        int res = -1;
 
-        while(true){
-            int mid = left + (right - left) / 2;
+        if (arr != null) {
 
-            if (arr[mid].equals(value)){
-                return mid;
-            }
-            if (arr[mid] > value){
-                right = mid;
-            }
-            else{
-                left = mid;
+            int left = 0;
+            int right = arr.length;
+            int mid;
+
+            while (left < right) {
+                mid = left + (right - left) / 2;
+
+                if (arr[mid].equals(value)) {
+                    res = mid;
+                    break;
+                }
+                if(arr[0].equals(value)) {
+                    res = 0;
+                    break;
+                }
+                if (value < arr[mid]) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
             }
         }
-
+        return res;
     }
 }
