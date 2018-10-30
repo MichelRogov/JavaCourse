@@ -1,5 +1,8 @@
 package Stream;
 
+import Stream.Stream_Api.functional_interface.SquareRoot;
+import Stream.Stream_Api.functional_interface.impl.SquareRootImpl;
+
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -48,6 +51,12 @@ public class App {
                 .collect(Collectors.toList());
 
         System.out.println(collect);
+
+
+        int[] numArr = new int[] {4,5,6,7,8,9};
+        SquareRoot squareRoot = new SquareRootImpl();
+
+        Arrays.stream(numArr).mapToDouble(squareRoot::findSquareRoot).forEach(System.out::println);
     }
 
 }
