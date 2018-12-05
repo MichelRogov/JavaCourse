@@ -3,7 +3,7 @@ package Multithreading.ThreadsCountersAtomic;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-public class CountersAppl {
+public class CountersApp {
 
 	private static final int N_COUNTERS = 1000;
 	private static final int N_RUNS = 100000;

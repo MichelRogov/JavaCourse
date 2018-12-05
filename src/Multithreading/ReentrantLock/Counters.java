@@ -1,15 +1,17 @@
-package Multithreading.ThreadsCounters;
+package Multithreading.ReentrantLock;
+
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Counters extends Thread {
 	private static long count1 = 0;
 	private static long count2 = 0;
-	private static Object monitor = new Object();
 	private int nRuns;
-	
+
+	static ReentrantLock lock = new ReentrantLock();
+
 	public Counters(int nRuns) {
 		super();
 		this.nRuns = nRuns;
-//		setDaemon(true);
 	}
 
 	@Override
@@ -20,13 +22,21 @@ public class Counters extends Thread {
 		}
 	}
 	
-	synchronized private static void putCount1(int number){
-		count1 += number;
+	private void putCount1(int number){
+		lock.lock();
+		try {
+			count1 += number;
+		} finally {
+			lock.unlock();
+		}
 	}
 	
-	private static void putCount2(int number){
-		synchronized (monitor) {
-			count2 = count2 + number;
+	private void putCount2(int number){
+		lock.lock();
+		try {
+			count2 += number;
+		} finally {
+			lock.unlock();
 		}
 	}
 
