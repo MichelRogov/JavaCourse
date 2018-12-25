@@ -1,10 +1,10 @@
 package Multithreading.Printers;
 
 public class Printer extends Thread {
-	String symbols;
+	private String symbols;
 	private long interval;
 	
-	public Printer(String symbols, int interval) {
+	public Printer(String symbols, Integer interval) {
 		super();
 		this.symbols = symbols;
 		this.interval = interval*1000;
@@ -24,5 +24,13 @@ public class Printer extends Thread {
 					current = 0;
 			}
 		}
+	}
+
+	public String getSymbols() {
+		return symbols;
+	}
+
+	public void setSymbols(String symbols) {
+		this.symbols = symbols;
 	}
 }
