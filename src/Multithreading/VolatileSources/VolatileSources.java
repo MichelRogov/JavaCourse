@@ -1,7 +1,5 @@
 package Multithreading.VolatileSources;
 
-import java.util.Scanner;
-
 public class VolatileSources extends Thread {
     private volatile boolean running = true;
 
@@ -14,6 +12,7 @@ public class VolatileSources extends Thread {
                 e.printStackTrace();
             }
         }
+        System.out.println("Thread stopped");
     }
 
     public void shutDown() {
@@ -22,13 +21,12 @@ public class VolatileSources extends Thread {
 }
 
 class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         VolatileSources vl = new VolatileSources();
         vl.start();
 
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
+        Thread.sleep(3000);
+        System.out.println("Going to set the stop flag to true");
         vl.shutDown();
-        System.out.println("Finished");
     }
 }

@@ -3,7 +3,7 @@ package Multithreading.ThreadsCounters;
 public class Counters extends Thread {
 	private static long count1 = 0;
 	private static long count2 = 0;
-	private static Object monitor = new Object();
+	private static final Object mutex = new Object();
 	private int nRuns;
 	
 	public Counters(int nRuns) {
@@ -23,9 +23,9 @@ public class Counters extends Thread {
 	synchronized private static void putCount1(int number){
 		count1 += number;
 	}
-	
-	private static void putCount2(int number){
-		synchronized (monitor) {
+
+	private void putCount2(int number){
+		synchronized (mutex) {
 			count2 = count2 + number;
 		}
 	}
