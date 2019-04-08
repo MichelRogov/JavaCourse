@@ -17,8 +17,7 @@ public class Sender extends Thread {
         for (int i = 0; i <= nMessages; i++) {
             if (i % 2 == 0) {
                 messageBoxEven.putMessage("message " + i);
-            }
-            else {
+            } else {
                 messageBoxOdd.putMessage("message " + i);
             }
         }

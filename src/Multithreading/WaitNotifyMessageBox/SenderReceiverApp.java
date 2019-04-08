@@ -11,9 +11,9 @@ public class SenderReceiverApp {
         Sender sender = new Sender(messageBoxOdd, messageBoxEven);
         sender.start();
 
-        for(int i = 0; i < N_RECEIVERS; i++) {
+        for (int i = 0; i < N_RECEIVERS; i++) {
             Receiver receiver = new Receiver();
-            receiver.setMessageBox( i % 2 == 0 ? messageBoxEven : messageBoxOdd);
+            receiver.setMessageBox(i % 2 == 0 ? messageBoxEven : messageBoxOdd);
             receiver.start();
         }
         sender.join();

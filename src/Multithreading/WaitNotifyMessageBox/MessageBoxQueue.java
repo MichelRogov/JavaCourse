@@ -1,31 +1,32 @@
 package Multithreading.WaitNotifyMessageBox;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MessageBoxQueue implements MessageBox {
-	private Queue<String> queue = new LinkedList<>();
+    private Queue<String> queue = new LinkedList<>();
 
-	@Override
-	public synchronized void putMessage(String message) {
-		queue.offer(message);
-		notify();
-	}
+    @Override
+    public synchronized void putMessage(String message) {
+        queue.offer(message);
+        notify();
+    }
 
-	@Override
-	public synchronized String getMessage() {
-		String message = null;
-		synchronized (this) {
-			while (queue.isEmpty()) {
-				try {
-					wait();
-				} catch (InterruptedException e) {
+    @Override
+    public synchronized String getMessage() {
+        String message = null;
+        synchronized (this) {
+            while (queue.isEmpty()) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
 
-				}
-			}
-			message = queue.poll();
-			notify();
-		}
-		return message;
-	}
+                }
+            }
+            message = queue.poll();
+            notify();
+        }
+        return message;
+    }
 
 }

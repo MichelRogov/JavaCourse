@@ -13,7 +13,7 @@ public class Receiver extends Thread {
 
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             String message = messageBox.getMessage();
             System.out.println("Thread id: " + getId() + " message: " + message);
         }

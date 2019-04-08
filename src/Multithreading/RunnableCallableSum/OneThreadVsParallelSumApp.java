@@ -45,7 +45,7 @@ public class OneThreadVsParallelSumApp {
         pool.shutdown();
         pool.awaitTermination(10, TimeUnit.SECONDS);
 
-        System.out.println("getParallelSumCallable: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
+        System.out.println("getParallelSumCallable time: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
     }
 
     private static void getParallelSumRunnable(List<List<Integer>> listNumbers) throws InterruptedException {
@@ -65,7 +65,7 @@ public class OneThreadVsParallelSumApp {
                 .mapToInt(ListSumRunnable::getSum)
                 .sum();
 
-        System.out.println("getParallelSumRunnable: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
+        System.out.println("getParallelSumRunnable time: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
     }
 
     private static void getSum(List<List<Integer>> listNumbers) {
@@ -74,7 +74,7 @@ public class OneThreadVsParallelSumApp {
                 .flatMap(List::stream)
                 .mapToInt(i -> i)
                 .sum();
-        System.out.println("getSum: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
+        System.out.println("getSum time: " + ChronoUnit.MILLIS.between(start, Instant.now()) + " Result: " + sum);
     }
 
     private static List<List<Integer>> getRandomNumbers() {
