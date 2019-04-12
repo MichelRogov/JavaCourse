@@ -10,7 +10,7 @@ public class MergeForkJoinApp{
         String[] a = "S O R T E X A M P L E".split(" ");
         MergeForkJoin mergeForkJoin = new MergeForkJoin(a, 0, a.length -1);
         sort(mergeForkJoin);
-        System.out.println(Arrays.toString(mergeForkJoin.a));
+        System.out.println(Arrays.toString(mergeForkJoin.array));
     }
 
 

@@ -3,14 +3,14 @@ package Multithreading.ForkJoin.MergeSort;
 import java.util.concurrent.RecursiveAction;
 
 public class MergeForkJoin extends RecursiveAction {
-    Comparable[] a;
+    Comparable[] array;
     Comparable[] aux;
     int low;
     int high;
 
-    public MergeForkJoin(Comparable[] a, int low, int high) {
-        this.a = a;
-        this.aux = new Comparable[a.length];
+    public MergeForkJoin(Comparable[] array, int low, int high) {
+        this.array = array;
+        this.aux = new Comparable[array.length];
         this.low = low;
         this.high = high;
     }
@@ -19,10 +19,10 @@ public class MergeForkJoin extends RecursiveAction {
     protected void compute() {
         if (low >= high) return;
         int mid = low + (high-low)/2;
-        MergeForkJoin left = new MergeForkJoin(a, low, mid);
-        MergeForkJoin right = new MergeForkJoin(a, mid+1, high);
+        MergeForkJoin left = new MergeForkJoin(array, low, mid);
+        MergeForkJoin right = new MergeForkJoin(array, mid+1, high);
         invokeAll(left, right);
-        merge(this.a, this.aux, this.low, mid, this.high);
+        merge(this.array, this.aux, this.low, mid, this.high);
     }
 
 
@@ -31,7 +31,7 @@ public class MergeForkJoin extends RecursiveAction {
         for (int k = lo; k <= hi; k++) {
             aux[k] = a[k];
         }
-        // merge back to a[]
+        // merge back to array[]
         int i = lo, j = mid+1;
         for (int k = lo; k <= hi; k++) {
             if      (i > mid)              a[k] = aux[j++];

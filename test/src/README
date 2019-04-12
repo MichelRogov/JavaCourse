@@ -7,7 +7,7 @@ In order to run test under Intellij you need:
     Move your cursor to @Test annotation and click on it.
     Press ALT + ENTER and chose in context menu Add 'JUnit 4.2' to classpath
 
-    After it you shouldn't see any errors on the page. Anyway, if it is not a case you have to do following:
-    Read error description and try to find the answer in google. Try to ask somebody for help in your group,
-    maybe somebody has resolved it already. Try to google again. Only in case, if you did all this steps and gnothing 
-    didn't help you, write me in skype, and i will try to find time to help you.
+    After it you shouldn't see any errors on the page. Anyway, if it's not a case do following:
+    Read error description and try to find the answer in google. Ask somebody for help in your group,
+    maybe somebody has resolved it already. Try to use google again. Only in case, if you did all this steps and nothing
+    didn't help you, write me in skype.
