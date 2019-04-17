@@ -52,15 +52,6 @@ public class ReflectionExample {
                     getType(f.getType()) + " " + f.getName() + ";");
         }
 
-        // выводим констукторы класса
-        Constructor[] constructors = clazz.getDeclaredConstructors();
-        for (Constructor c : constructors) {
-            System.out.print("\t" + getModifiers(c.getModifiers()) +
-                    clazz.getSimpleName() + "(");
-            System.out.print(getParameters(c.getParameterTypes()));
-            System.out.println(") { }");
-        }
-
         // выводим методы класса
         Method[] methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
@@ -79,28 +70,6 @@ public class ReflectionExample {
         }
 
         System.out.println("}");
-
-    }
-
-    static String getModifiers(int mod) {
-        String modifiers = "";
-        if (Modifier.isPublic(mod)) {
-            modifiers += "public ";
-        }
-        if (Modifier.isProtected(mod)) {
-            modifiers += "protected ";
-        }
-        if (Modifier.isPrivate(mod)) {
-            modifiers += "private ";
-        }
-        if (Modifier.isStatic(mod)) {
-            modifiers += "static ";
-        }
-        if (Modifier.isAbstract(mod)) {
-            modifiers += "abstract ";
-        }
-
-        return modifiers;
     }
 
     static String getType(Class clazz) {
@@ -123,7 +92,29 @@ public class ReflectionExample {
         return param;
     }
 
+    private static String getModifiers(int mod) {
+        String modifiers = "";
+        if (Modifier.isPublic(mod)) {
+            modifiers += "public ";
+        }
+        if (Modifier.isProtected(mod)) {
+            modifiers += "protected ";
+        }
+        if (Modifier.isPrivate(mod)) {
+            modifiers += "private ";
+        }
+        if (Modifier.isStatic(mod)) {
+            modifiers += "static ";
+        }
+        if (Modifier.isAbstract(mod)) {
+            modifiers += "abstract ";
+        }
+        if (Modifier.isFinal(mod)) {
+            modifiers += "final ";
+        }
 
+        return modifiers;
+    }
 
 }
 
